@@ -15,6 +15,14 @@
     <textarea id="comment" rows="3" placeholder="おすすめポイント"></textarea>
     <button>投稿する</button>
   </form>
+
+  <!-- タブ切り替えを追加 -->
+  <nav class="tabs">
+    <button type="button" id="tab-all" class="tab-btn active" onclick="switchTab('all')">すべての投稿</button>
+    <button type="button" id="tab-liked" class="tab-btn" onclick="switchTab('liked')">いいね一覧</button>
+    <button type="button" id="tab-want" class="tab-btn" onclick="switchTab('want')">行きたい！</button>
+  </nav>
+
   <div id="list"></div>
 </main>
 <script src="script.js"></script>
