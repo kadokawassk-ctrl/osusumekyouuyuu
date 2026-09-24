@@ -8,11 +8,18 @@
 </head>
 <body>
 <main>
-  <h1><img src="logo.png" alt="GOHANOTE" class="logo"></h1>
+  <h1><img src="./images/logo.png" alt="GOHANOTE" class="logo"></h1>
   <form id="form">
     <input id="name" placeholder="お店・場所の名前" required>
     <input id="area" placeholder="エリア（例：下北沢）">
     <textarea id="comment" rows="3" placeholder="おすすめポイント"></textarea>
+    <details>
+      <summary>地図をもっと正確にする（任意）</summary>
+      <input id="address" placeholder="住所（例：東京都世田谷区代田1-1-1）">
+      <input id="embed" placeholder="地図の埋め込みコード">
+      <small>PCのGoogleマップでお店を開き、「共有」→「地図を埋め込む」→「HTMLをコピー」で貼り付けると、そのお店にピッタリ合います。</small>
+    </details>
+    <label class="check"><input type="checkbox" id="map" checked> Googleマップを一緒に載せる</label>
     <button>投稿する</button>
   </form>
   <div id="list"></div>
