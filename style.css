@@ -1,52 +1,20 @@
-:root {
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#fff;--text:#222;--line:#ddd;--sub:#777
-}
-
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#1a1a1a;--text:#eee;--line:#444;--sub:#999}}
-:root[data-theme="dark"]{--bg:#1a1a1a;--text:#eee;--line:#444;--sub:#999
-}
-
-*{
-  box-sizing:border-box
-}
-
-body{
-  margin:0;background:var(--bg);color:var(--text);font-family:system-ui,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
-main{max-width:480px;margin:0 auto;padding:24px 16px
-}
-
-h1{
-  font-size:1.3rem;margin:0 0 16px
-}
-
-form{
-  display:grid;gap:8px;margin-bottom:24px
-}
-
-input,textarea,button{
-  font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fff;--text:#222;--line:#ddd;--sub:#777;--accent:#e8590c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a1a;--text:#eee;--line:#444;--sub:#999;--accent:#ff8a4c}}
+:root[data-theme="dark"]{--bg:#1a1a1a;--text:#eee;--line:#444;--sub:#999;--accent:#ff8a4c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
+main{max-width:480px;margin:0 auto;padding:24px 16px}
+h1{font-size:1.3rem;margin:0 0 16px;text-align:center}
+form{display:grid;gap:8px;margin-bottom:24px}
+input,textarea,button{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px}
 button{cursor:pointer}
-form button{background:var(--text);color:var(--bg);border-color:var(--text)
-}
-
-.item{
-  border-top:1px solid var(--line);padding:12px 0
-}
-
-.item h2{
-  font-size:1rem;margin:0
-}
-
-.item small{
-  color:var(--sub)
-}
-
-.item p{
-  margin:4px 0 8px;white-space:pre-wrap
-}
-
-.item button{
-  font-size:.8rem;padding:2px 10px
-}
+form button{background:var(--text);color:var(--bg);border-color:var(--text)}
+.item{border-top:1px solid var(--line);padding:12px 0}
+.item h2{font-size:1rem;margin:0}
+.item small{color:var(--sub)}
+.item p{margin:4px 0 8px;white-space:pre-wrap}
+.item button,.count{font-size:.85rem;padding:2px 10px}
+.count{color:var(--sub);display:inline-block}
+.item .liked{color:var(--accent);border-color:var(--accent)}
+.logo{display:block;width:200px;max-width:70%;height:auto;margin:0 auto 8px;border-radius:12px}
