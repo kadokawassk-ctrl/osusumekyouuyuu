@@ -18,3 +18,42 @@ form button{background:var(--text);color:var(--bg);border-color:var(--text)}
 .count{color:var(--sub);display:inline-block}
 .item .liked{color:var(--accent);border-color:var(--accent)}
 .logo{display:block;width:200px;max-width:70%;height:auto;margin:0 auto 8px;border-radius:12px}
+
+
+/* --- 追加: タブメニューのスタイル --- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+}
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  padding: 8px 0;
+  font-weight: bold;
+  color: var(--sub);
+}
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.empty-msg {
+  text-align: center;
+  color: var(--sub);
+  padding: 24px 0;
+  font-size: 0.9rem;
+}
+
+.item .wanted {
+  color: var(--want);
+  border-color: var(--want);
+}
+.item span {
+  display: flex;
+  gap: 6px;
+}

@@ -19,6 +19,17 @@ function save(key, value) {
 
 let mySpots = load("spots", []);   // 自分の投稿
 let liked = load("liked", {});     // いいねした投稿のID { o1: true }
+let wanted = load("wanted", {});   // 「行きたい！」した投稿のID { o1: true }
+let currentTab = "all";            // 現在選択中のタブ ("all", "liked", "want")
+
+// ---- タブ切り替え ----
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById("tab-all").classList.toggle("active", tab === "all");
+  document.getElementById("tab-liked").classList.toggle("active", tab === "liked");
+  document.getElementById("tab-want").classList.toggle("active", tab === "want");
+  render();
+}
 
 // ---- 表示 ----
 function render() {
@@ -26,10 +37,31 @@ function render() {
   list.innerHTML = "";
 
   // 自分の投稿 → 他の人の投稿 の順に並べる
-  const all = [
+  let all = [
     ...mySpots.map((s, i) => ({ ...s, id: "m" + i, mine: true, likes: 0 })),
     ...OTHERS.map(s => ({ ...s, mine: false }))
   ];
+
+// タブによる絞り込み処理
+  if (currentTab === "liked") {
+    all = all.filter(s => liked[s.id]);
+  } else if (currentTab === "want") {
+    all = all.filter(s => wanted[s.id]);
+  }
+
+  // 該当する投稿がない場合のメッセージ表示
+  if (all.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty-msg";
+    const msgMap = {
+      liked: "いいねした投稿はありません",
+      want: "「行きたい！」した投稿はありません",
+      all: "投稿がありません"
+    };
+    empty.textContent = msgMap[currentTab];
+    list.appendChild(empty);
+    return;
+  }
 
   all.forEach(s => {
     const div = document.createElement("div");
@@ -63,6 +95,18 @@ function render() {
         render();
       };
       box.appendChild(btn);
+
+      // 他の人の投稿：「行きたい！」ボタン
+      const isWanted = !!wanted[s.id];
+      const wantBtn = document.createElement("button");
+      wantBtn.className = isWanted ? "wanted" : "";
+      wantBtn.textContent = isWanted ? "★ 行きたい！" : "☆ 行きたい！";
+      wantBtn.onclick = () => {
+        wanted[s.id] = !isWanted;
+        save("wanted", wanted);
+        render();
+      };
+      box.appendChild(wantBtn);
     }
     list.appendChild(div);
   });
